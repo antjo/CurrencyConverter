@@ -9,9 +9,12 @@
 <body>
     <form id="form1" runat="server">
     <div>        
-        <h1>Convert something diffrent another time again ggggg</h1>
+
+        <h1>Convert something </h1>
+
         <br />
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <br />
         <!-- when the button is clicked it will redirect to convertpage.aspx -->
         <br />

@@ -1,0 +1,6 @@
+c:\users\anthon\documents\visual studio 2013\Projects\CurrencyConverter\CurrencyConverter\bin\CurrencyConverter.dll.config
+c:\users\anthon\documents\visual studio 2013\Projects\CurrencyConverter\CurrencyConverter\bin\CurrencyConverter.dll
+c:\users\anthon\documents\visual studio 2013\Projects\CurrencyConverter\CurrencyConverter\bin\CurrencyConverter.pdb
+c:\users\anthon\documents\visual studio 2013\Projects\CurrencyConverter\CurrencyConverter\obj\Debug\CurrencyConverter.csprojResolveAssemblyReference.cache
+c:\users\anthon\documents\visual studio 2013\Projects\CurrencyConverter\CurrencyConverter\obj\Debug\CurrencyConverter.dll
+c:\users\anthon\documents\visual studio 2013\Projects\CurrencyConverter\CurrencyConverter\obj\Debug\CurrencyConverter.pdb

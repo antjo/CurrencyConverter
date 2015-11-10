@@ -32,6 +32,7 @@
     <center>
     <div class="auto-style8">        
 
+
         <h1 style="height: 92px; text-align: center">&nbsp;</h1>
         <h1 style="height: 92px; text-align: center">Shadow Corp Currency Converter</h1>
 

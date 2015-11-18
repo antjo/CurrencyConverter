@@ -31,13 +31,22 @@ namespace CurrencyConverter {
         protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
-        /// DropDownList3 control.
+        /// money_text_box control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList3;
+        protected global::System.Web.UI.WebControls.TextBox money_text_box;
+        
+        /// <summary>
+        /// ddlfrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlfrom;
         
         /// <summary>
         /// Button2 control.
@@ -49,13 +58,13 @@ namespace CurrencyConverter {
         protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
-        /// DropDownList4 control.
+        /// ddlto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        protected global::System.Web.UI.WebControls.DropDownList ddlto;
         
         /// <summary>
         /// ConvertButton0 control.

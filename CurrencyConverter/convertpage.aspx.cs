@@ -13,5 +13,10 @@ namespace CurrencyConverter
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.RedirectPermanent("startpage.aspx");
+        }
     }
 }

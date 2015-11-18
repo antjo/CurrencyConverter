@@ -22,7 +22,7 @@
         <asp:Label ID="FromToText" runat="server" Text="Label" ></asp:Label>
         <br />
         <br />
-        <asp:Button ID="Button1" runat="server" Text="Convert Again" />
+        <asp:Button ID="Button1" runat="server" Text="Convert Again" OnClick="Button1_Click" />
     </center>
     </div>
     

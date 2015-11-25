@@ -23,13 +23,20 @@ namespace CurrencyConverter.localhost {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="WebService1Soap", Namespace="http://tempuri.org/")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CurrencyElement[]))]
     public partial class WebService1 : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback Curr_converterOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback createChartOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback createChartAxisXOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback createChartAxisYOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -73,6 +80,15 @@ namespace CurrencyConverter.localhost {
         public event Curr_converterCompletedEventHandler Curr_converterCompleted;
         
         /// <remarks/>
+        public event createChartCompletedEventHandler createChartCompleted;
+        
+        /// <remarks/>
+        public event createChartAxisXCompletedEventHandler createChartAxisXCompleted;
+        
+        /// <remarks/>
+        public event createChartAxisYCompletedEventHandler createChartAxisYCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Curr_converter", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string Curr_converter(string curr_from, string curr_to, decimal amount_of_money) {
             object[] results = this.Invoke("Curr_converter", new object[] {
@@ -106,6 +122,99 @@ namespace CurrencyConverter.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/createChart", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public CurrencyElement[] createChart(string from_curr_code, string to_curr_code) {
+            object[] results = this.Invoke("createChart", new object[] {
+                        from_curr_code,
+                        to_curr_code});
+            return ((CurrencyElement[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void createChartAsync(string from_curr_code, string to_curr_code) {
+            this.createChartAsync(from_curr_code, to_curr_code, null);
+        }
+        
+        /// <remarks/>
+        public void createChartAsync(string from_curr_code, string to_curr_code, object userState) {
+            if ((this.createChartOperationCompleted == null)) {
+                this.createChartOperationCompleted = new System.Threading.SendOrPostCallback(this.OncreateChartOperationCompleted);
+            }
+            this.InvokeAsync("createChart", new object[] {
+                        from_curr_code,
+                        to_curr_code}, this.createChartOperationCompleted, userState);
+        }
+        
+        private void OncreateChartOperationCompleted(object arg) {
+            if ((this.createChartCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.createChartCompleted(this, new createChartCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/createChartAxisX", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] createChartAxisX(string from, string to) {
+            object[] results = this.Invoke("createChartAxisX", new object[] {
+                        from,
+                        to});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void createChartAxisXAsync(string from, string to) {
+            this.createChartAxisXAsync(from, to, null);
+        }
+        
+        /// <remarks/>
+        public void createChartAxisXAsync(string from, string to, object userState) {
+            if ((this.createChartAxisXOperationCompleted == null)) {
+                this.createChartAxisXOperationCompleted = new System.Threading.SendOrPostCallback(this.OncreateChartAxisXOperationCompleted);
+            }
+            this.InvokeAsync("createChartAxisX", new object[] {
+                        from,
+                        to}, this.createChartAxisXOperationCompleted, userState);
+        }
+        
+        private void OncreateChartAxisXOperationCompleted(object arg) {
+            if ((this.createChartAxisXCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.createChartAxisXCompleted(this, new createChartAxisXCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/createChartAxisY", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string[] createChartAxisY(string from, string to) {
+            object[] results = this.Invoke("createChartAxisY", new object[] {
+                        from,
+                        to});
+            return ((string[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void createChartAxisYAsync(string from, string to) {
+            this.createChartAxisYAsync(from, to, null);
+        }
+        
+        /// <remarks/>
+        public void createChartAxisYAsync(string from, string to, object userState) {
+            if ((this.createChartAxisYOperationCompleted == null)) {
+                this.createChartAxisYOperationCompleted = new System.Threading.SendOrPostCallback(this.OncreateChartAxisYOperationCompleted);
+            }
+            this.InvokeAsync("createChartAxisY", new object[] {
+                        from,
+                        to}, this.createChartAxisYOperationCompleted, userState);
+        }
+        
+        private void OncreateChartAxisYOperationCompleted(object arg) {
+            if ((this.createChartAxisYCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.createChartAxisYCompleted(this, new createChartAxisYCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -125,11 +234,44 @@ namespace CurrencyConverter.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.79.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class CurrencyElement {
+        
+        private object axisXField;
+        
+        private double axisYField;
+        
+        /// <remarks/>
+        public object AxisX {
+            get {
+                return this.axisXField;
+            }
+            set {
+                this.axisXField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double AxisY {
+            get {
+                return this.axisYField;
+            }
+            set {
+                this.axisYField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
     public delegate void Curr_converterCompletedEventHandler(object sender, Curr_converterCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.81.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class Curr_converterCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -146,6 +288,84 @@ namespace CurrencyConverter.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    public delegate void createChartCompletedEventHandler(object sender, createChartCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class createChartCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal createChartCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public CurrencyElement[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((CurrencyElement[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    public delegate void createChartAxisXCompletedEventHandler(object sender, createChartAxisXCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class createChartAxisXCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal createChartAxisXCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    public delegate void createChartAxisYCompletedEventHandler(object sender, createChartAxisYCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class createChartAxisYCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal createChartAxisYCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string[])(this.results[0]));
             }
         }
     }

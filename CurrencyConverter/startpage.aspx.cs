@@ -5,8 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Globalization;
-
-
+using CurrencyConverter.App_Data;
+using System.Web.UI.DataVisualization.Charting;
 using System.Net;
 using System.Web.Script.Serialization;
 
@@ -17,16 +17,21 @@ namespace CurrencyConverter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            chart1.Visible = false;
         }
-                protected void ConvertButton_Click(object sender, EventArgs e)
+
+        protected void ConvertButton_Click(object sender, EventArgs e)
         {
 
+            int temp = 0;
+            if (!money_text_box.Text.Equals("") && Int32.TryParse(money_text_box.Text, out temp))
+            {
+                WebService1 mywebService = new WebService1();
+                TextBox1.Text = mywebService.Curr_converter(ddlfrom.SelectedValue, ddlto.SelectedValue, System.Convert.ToDecimal(money_text_box.Text));
 
-
-            localhost.WebService1 mywebService = new localhost.WebService1();
-            TextBox1.Text = mywebService.Curr_converter(ddlfrom.SelectedValue, ddlto.SelectedValue, System.Convert.ToDecimal(money_text_box.Text));
-
+                if (ddlto.SelectedIndex != ddlfrom.SelectedIndex) addChart(ddlfrom.SelectedValue, ddlto.SelectedValue);
+                else chart1.Visible = false;
+            }
 
         }
 
@@ -39,10 +44,39 @@ namespace CurrencyConverter
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Int16 indx =  (Int16)ddlto.SelectedIndex ;
-
-            ddlto.SelectedIndex = ddlfrom.SelectedIndex;
-            ddlfrom.SelectedIndex = indx;
+                        
         }
+
+
+        private void addChart(string from, string to)
+        {            
+            //clear all existing chart areas and series
+            chart1.Series.Clear();
+            chart1.ChartAreas.Clear();
+            //add new chart area and series for the new graph
+            chart1.Series.Add("Series1");            
+            chart1.ChartAreas.Add("ChartArea1");
+
+            //use web service to get the results to plot
+            WebService1 mywebService = new WebService1();            
+            CurrencyElement[] result = mywebService.createChart(from, to);
+
+            //add each data point and label to the series
+            foreach(CurrencyElement obj in result){
+                DateTime date = (DateTime)obj.AxisX;
+                double rate = obj.AxisY;                
+                chart1.Series["Series1"].Points.AddXY(date.Date, rate);
+            }
+
+            //adjust the appearance of the graph plot
+            chart1.ChartAreas["ChartArea1"].AxisX.Maximum = ((DateTime)result[result.GetLength(0) - 1].AxisX).ToOADate();
+            chart1.ChartAreas["ChartArea1"].AxisX.Minimum = ((DateTime)result[0].AxisX).ToOADate();
+            chart1.ChartAreas["ChartArea1"].AxisX.IntervalType = DateTimeIntervalType.Months;
+            chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+            //lastly make the graph visible for the user 
+            chart1.Visible = true;
+        }
+
     }
 }

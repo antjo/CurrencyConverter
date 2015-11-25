@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="startpage.aspx.cs" Inherits="CurrencyConverter.startpage" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -93,7 +95,7 @@
 
 
     <asp:DropDownList ID="ddlfrom" runat="server" Height="27px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="198px">
-        <asp:ListItem Value="USD" Selected = "true" Text="United States Dollars $"></asp:ListItem>
+    <asp:ListItem Value="USD" Selected = "true" Text="United States Dollars $"></asp:ListItem>
     <asp:ListItem Value="EUR" Text="Euro €"></asp:ListItem>
     <asp:ListItem Value="GBP" Text="United Kingdom Pounds £"></asp:ListItem>
     <asp:ListItem Value="JPY" Text="Japan Yen ¥"></asp:ListItem>
@@ -108,7 +110,7 @@
     <asp:ListItem Value="BBD" Text="Barbados Dollars $"></asp:ListItem>
     <asp:ListItem Value="BMD" Text="Bermuda Dollars $"></asp:ListItem>
     <asp:ListItem Value="BRL" Text="Brazil Reais R$"></asp:ListItem>
-   <asp:ListItem Value="BGN" Text="Bulgaria Leva лв"></asp:ListItem>
+    <asp:ListItem Value="BGN" Text="Bulgaria Leva лв"></asp:ListItem>
     <asp:ListItem Value="CAD" Text="Canada Dollars $"></asp:ListItem>
     <asp:ListItem Value="XOF" Text="CFA Francs BCEAO CFAF"></asp:ListItem>
     <asp:ListItem Value="XAF" Text="CFA Francs BEAC CFAF"></asp:ListItem>
@@ -141,7 +143,7 @@
     <asp:ListItem Value="KES" Text="Kenya Shillings K Sh"></asp:ListItem>
     <asp:ListItem Value="KWD" Text="Kuwait Dinars KD"></asp:ListItem>
     <asp:ListItem Value="LBP" Text="Lebanon Pounds £"></asp:ListItem>
-        <asp:ListItem Value="LYD" Text="Libyan Dinar LD"></asp:ListItem>
+    <asp:ListItem Value="LYD" Text="Libyan Dinar LD"></asp:ListItem>
     <asp:ListItem Value="MYR" Text="Malaysia Ringgits RM"></asp:ListItem>
     <asp:ListItem Value="MTL" Text="Malta Liri Lm"></asp:ListItem>
     <asp:ListItem Value="MUR" Text="Mauritius Rupees ₨"></asp:ListItem>
@@ -232,7 +234,7 @@
     <asp:ListItem Value="KES" Text="Kenya Shillings K Sh"></asp:ListItem>
     <asp:ListItem Value="KWD" Text="Kuwait Dinars KD"></asp:ListItem>
     <asp:ListItem Value="LBP" Text="Lebanon Pounds £"></asp:ListItem>
-<asp:ListItem Value="LYD" Text="Libyan Dinar LD"></asp:ListItem>
+    <asp:ListItem Value="LYD" Text="Libyan Dinar LD"></asp:ListItem>
     <asp:ListItem Value="MYR" Text="Malaysia Ringgits RM"></asp:ListItem>
     <asp:ListItem Value="MTL" Text="Malta Liri Lm"></asp:ListItem>
     <asp:ListItem Value="MUR" Text="Mauritius Rupees ₨"></asp:ListItem>
@@ -269,22 +271,30 @@
     <asp:ListItem Value="VND" Text="Vietnam Dong ₫"></asp:ListItem>
     <asp:ListItem Value="ZMK" Text="Zambia Kwacha ZK"></asp:ListItem>
     </asp:DropDownList>
-                    </td>
-                    <td class="auto-style10" style="width: 60px;">
+    </td>
+    <td class="auto-style10" style="width: 60px;">
     <asp:Button ID="ConvertButton0" runat="server" height="29px" OnClick="ConvertButton_Click" Text="Convert" />
-                    </td>
-                </tr>
-                </table>
-                </center>
-            </div>
-        </div>
-        <br />
-
-
-
-
+    </td>
+    </tr>
+    </table>
+    </center>
+    </div>
+    </div>
+    <br />
 
     </form>
+
+
+    <div id="graph">
+
+        <asp:Chart runat="server" ID="chart1">
+            <Series></Series>
+            <ChartAreas></ChartAreas>
+        </asp:Chart>
+
+    </div>
+
+
 </body>
 
 </html>

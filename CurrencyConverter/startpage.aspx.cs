@@ -29,7 +29,8 @@ namespace CurrencyConverter
             {
                 WebService1 mywebService = new WebService1();
                 TextBox1.Text = mywebService.Curr_converter(ddlfrom.SelectedValue, ddlto.SelectedValue, System.Convert.ToDecimal(money_text_box.Text));
-
+                TextBox2.Text = "1 " + ddlfrom.SelectedValue + " = " + mywebService.get_rate_from_api(1, ddlfrom.SelectedValue, ddlto.SelectedValue)+" "+ddlto.SelectedValue;
+                TextBox3.Text = "1 " + ddlto.SelectedValue + " = " + mywebService.get_rate_from_api(1, ddlto.SelectedValue, ddlfrom.SelectedValue) + " " + ddlfrom.SelectedValue; ;
                 if (ddlto.SelectedIndex != ddlfrom.SelectedIndex) addChart(ddlfrom.SelectedValue, ddlto.SelectedValue);
                 else chart1.Visible = false;
             }
@@ -40,12 +41,14 @@ namespace CurrencyConverter
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void Swap_Click(object sender, EventArgs e)
         {
-                        
+            int index = ddlfrom.SelectedIndex;
+            ddlfrom.SelectedIndex = ddlto.SelectedIndex;
+            ddlto.SelectedIndex = index;
         }
 
 

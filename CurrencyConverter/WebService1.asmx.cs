@@ -41,8 +41,8 @@ namespace CurrencyConverter
                result_amount_of_money = System.Convert.ToString(rate_from_api * amount_of_money);
             return result_amount_of_money;
         }
-
-        private decimal get_rate_from_api(decimal amount_of_money, string from_curr_code, string to_curr_code)
+        [WebMethod]
+        public decimal get_rate_from_api(decimal amount_of_money, string from_curr_code, string to_curr_code)
 
         {
 

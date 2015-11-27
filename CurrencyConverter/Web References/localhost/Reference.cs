@@ -32,11 +32,9 @@ namespace CurrencyConverter.localhost {
         
         private System.Threading.SendOrPostCallback Curr_converterOperationCompleted;
         
+        private System.Threading.SendOrPostCallback get_rate_from_apiOperationCompleted;
+        
         private System.Threading.SendOrPostCallback createChartOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback createChartAxisXOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback createChartAxisYOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -80,13 +78,10 @@ namespace CurrencyConverter.localhost {
         public event Curr_converterCompletedEventHandler Curr_converterCompleted;
         
         /// <remarks/>
+        public event get_rate_from_apiCompletedEventHandler get_rate_from_apiCompleted;
+        
+        /// <remarks/>
         public event createChartCompletedEventHandler createChartCompleted;
-        
-        /// <remarks/>
-        public event createChartAxisXCompletedEventHandler createChartAxisXCompleted;
-        
-        /// <remarks/>
-        public event createChartAxisYCompletedEventHandler createChartAxisYCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Curr_converter", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -122,6 +117,39 @@ namespace CurrencyConverter.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/get_rate_from_api", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public decimal get_rate_from_api(decimal amount_of_money, string from_curr_code, string to_curr_code) {
+            object[] results = this.Invoke("get_rate_from_api", new object[] {
+                        amount_of_money,
+                        from_curr_code,
+                        to_curr_code});
+            return ((decimal)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void get_rate_from_apiAsync(decimal amount_of_money, string from_curr_code, string to_curr_code) {
+            this.get_rate_from_apiAsync(amount_of_money, from_curr_code, to_curr_code, null);
+        }
+        
+        /// <remarks/>
+        public void get_rate_from_apiAsync(decimal amount_of_money, string from_curr_code, string to_curr_code, object userState) {
+            if ((this.get_rate_from_apiOperationCompleted == null)) {
+                this.get_rate_from_apiOperationCompleted = new System.Threading.SendOrPostCallback(this.Onget_rate_from_apiOperationCompleted);
+            }
+            this.InvokeAsync("get_rate_from_api", new object[] {
+                        amount_of_money,
+                        from_curr_code,
+                        to_curr_code}, this.get_rate_from_apiOperationCompleted, userState);
+        }
+        
+        private void Onget_rate_from_apiOperationCompleted(object arg) {
+            if ((this.get_rate_from_apiCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.get_rate_from_apiCompleted(this, new get_rate_from_apiCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/createChart", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public CurrencyElement[] createChart(string from_curr_code, string to_curr_code) {
             object[] results = this.Invoke("createChart", new object[] {
@@ -149,68 +177,6 @@ namespace CurrencyConverter.localhost {
             if ((this.createChartCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.createChartCompleted(this, new createChartCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/createChartAxisX", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string[] createChartAxisX(string from, string to) {
-            object[] results = this.Invoke("createChartAxisX", new object[] {
-                        from,
-                        to});
-            return ((string[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void createChartAxisXAsync(string from, string to) {
-            this.createChartAxisXAsync(from, to, null);
-        }
-        
-        /// <remarks/>
-        public void createChartAxisXAsync(string from, string to, object userState) {
-            if ((this.createChartAxisXOperationCompleted == null)) {
-                this.createChartAxisXOperationCompleted = new System.Threading.SendOrPostCallback(this.OncreateChartAxisXOperationCompleted);
-            }
-            this.InvokeAsync("createChartAxisX", new object[] {
-                        from,
-                        to}, this.createChartAxisXOperationCompleted, userState);
-        }
-        
-        private void OncreateChartAxisXOperationCompleted(object arg) {
-            if ((this.createChartAxisXCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.createChartAxisXCompleted(this, new createChartAxisXCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/createChartAxisY", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string[] createChartAxisY(string from, string to) {
-            object[] results = this.Invoke("createChartAxisY", new object[] {
-                        from,
-                        to});
-            return ((string[])(results[0]));
-        }
-        
-        /// <remarks/>
-        public void createChartAxisYAsync(string from, string to) {
-            this.createChartAxisYAsync(from, to, null);
-        }
-        
-        /// <remarks/>
-        public void createChartAxisYAsync(string from, string to, object userState) {
-            if ((this.createChartAxisYOperationCompleted == null)) {
-                this.createChartAxisYOperationCompleted = new System.Threading.SendOrPostCallback(this.OncreateChartAxisYOperationCompleted);
-            }
-            this.InvokeAsync("createChartAxisY", new object[] {
-                        from,
-                        to}, this.createChartAxisYOperationCompleted, userState);
-        }
-        
-        private void OncreateChartAxisYOperationCompleted(object arg) {
-            if ((this.createChartAxisYCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.createChartAxisYCompleted(this, new createChartAxisYCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -294,6 +260,32 @@ namespace CurrencyConverter.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    public delegate void get_rate_from_apiCompletedEventHandler(object sender, get_rate_from_apiCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class get_rate_from_apiCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal get_rate_from_apiCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public decimal Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((decimal)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
     public delegate void createChartCompletedEventHandler(object sender, createChartCompletedEventArgs e);
     
     /// <remarks/>
@@ -314,58 +306,6 @@ namespace CurrencyConverter.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((CurrencyElement[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
-    public delegate void createChartAxisXCompletedEventHandler(object sender, createChartAxisXCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class createChartAxisXCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal createChartAxisXCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
-    public delegate void createChartAxisYCompletedEventHandler(object sender, createChartAxisYCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class createChartAxisYCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal createChartAxisYCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string[] Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string[])(this.results[0]));
             }
         }
     }

@@ -48,7 +48,7 @@
 
 
 
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+           
 
 
 
@@ -182,7 +182,7 @@
     </asp:DropDownList>
                     </td>
                     <td class="auto-style11" style="width: 40px" >
-    <asp:Button ID="Button2" runat="server" height="29px" Text="Swap" width="63px" OnClick="Button2_Click" />
+    <asp:Button ID="Button2" runat="server" height="29px" Text="Swap" width="63px" OnClick="Swap_Click" />
                     </td>
                     <td class="auto-style12" style="width: 110px" >
     <asp:DropDownList ID="ddlto" runat="server" Height="27px" Width="197px">
@@ -201,7 +201,7 @@
     <asp:ListItem Value="BBD" Text="Barbados Dollars $"></asp:ListItem>
     <asp:ListItem Value="BMD" Text="Bermuda Dollars $"></asp:ListItem>
     <asp:ListItem Value="BRL" Text="Brazil Reais R$"></asp:ListItem>
-   <asp:ListItem Value="BGN" Text="Bulgaria Leva лв"></asp:ListItem>
+    <asp:ListItem Value="BGN" Text="Bulgaria Leva лв"></asp:ListItem>
     <asp:ListItem Value="CAD" Text="Canada Dollars $"></asp:ListItem>
     <asp:ListItem Value="XOF" Text="CFA Francs BCEAO CFAF"></asp:ListItem>
     <asp:ListItem Value="XAF" Text="CFA Francs BEAC CFAF"></asp:ListItem>
@@ -275,15 +275,23 @@
     <td class="auto-style10" style="width: 60px;">
     <asp:Button ID="ConvertButton0" runat="server" height="29px" OnClick="ConvertButton_Click" Text="Convert" />
     </td>
-    </tr>
+    </tr>       
     </table>
+    <br />
+    <asp:TextBox ID="TextBox1" runat="server" Font-Size="Larger" style="text-align:center"></asp:TextBox>
+    <br />
+    <asp:TextBox ID="TextBox2" runat="server" Font-Size="Larger" style="text-align:center"></asp:TextBox>
+    <br />
+    <asp:TextBox ID="TextBox3" runat="server" Font-Size="Larger" style="text-align:center"></asp:TextBox>
     </center>
     </div>
     </div>
     <br />
-
+        
     </form>
 
+    <br />
+    <br />
 
     <div id="graph">
         <center>

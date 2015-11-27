@@ -18,6 +18,51 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+<<<<<<< HEAD
+=======
+      <s:element name="get_rate_from_api">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="amount_of_money" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="from_curr_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="to_curr_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_rate_from_apiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="get_rate_from_apiResult" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createChart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="from_curr_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="to_curr_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="createChartResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="createChartResult" type="tns:ArrayOfCurrencyElement" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCurrencyElement">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CurrencyElement" nillable="true" type="tns:CurrencyElement" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CurrencyElement">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AxisX" />
+          <s:element minOccurs="1" maxOccurs="1" name="AxisY" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+>>>>>>> origin/master
     </s:schema>
   </wsdl:types>
   <wsdl:message name="Curr_converterSoapIn">
@@ -26,11 +71,37 @@
   <wsdl:message name="Curr_converterSoapOut">
     <wsdl:part name="parameters" element="tns:Curr_converterResponse" />
   </wsdl:message>
+<<<<<<< HEAD
+=======
+  <wsdl:message name="get_rate_from_apiSoapIn">
+    <wsdl:part name="parameters" element="tns:get_rate_from_api" />
+  </wsdl:message>
+  <wsdl:message name="get_rate_from_apiSoapOut">
+    <wsdl:part name="parameters" element="tns:get_rate_from_apiResponse" />
+  </wsdl:message>
+  <wsdl:message name="createChartSoapIn">
+    <wsdl:part name="parameters" element="tns:createChart" />
+  </wsdl:message>
+  <wsdl:message name="createChartSoapOut">
+    <wsdl:part name="parameters" element="tns:createChartResponse" />
+  </wsdl:message>
+>>>>>>> origin/master
   <wsdl:portType name="WebService1Soap">
     <wsdl:operation name="Curr_converter">
       <wsdl:input message="tns:Curr_converterSoapIn" />
       <wsdl:output message="tns:Curr_converterSoapOut" />
     </wsdl:operation>
+<<<<<<< HEAD
+=======
+    <wsdl:operation name="get_rate_from_api">
+      <wsdl:input message="tns:get_rate_from_apiSoapIn" />
+      <wsdl:output message="tns:get_rate_from_apiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="createChart">
+      <wsdl:input message="tns:createChartSoapIn" />
+      <wsdl:output message="tns:createChartSoapOut" />
+    </wsdl:operation>
+>>>>>>> origin/master
   </wsdl:portType>
   <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -43,6 +114,27 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+<<<<<<< HEAD
+=======
+    <wsdl:operation name="get_rate_from_api">
+      <soap:operation soapAction="http://tempuri.org/get_rate_from_api" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createChart">
+      <soap:operation soapAction="http://tempuri.org/createChart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+>>>>>>> origin/master
   </wsdl:binding>
   <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -55,6 +147,27 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+<<<<<<< HEAD
+=======
+    <wsdl:operation name="get_rate_from_api">
+      <soap12:operation soapAction="http://tempuri.org/get_rate_from_api" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createChart">
+      <soap12:operation soapAction="http://tempuri.org/createChart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+>>>>>>> origin/master
   </wsdl:binding>
   <wsdl:service name="WebService1">
     <wsdl:port name="WebService1Soap" binding="tns:WebService1Soap">

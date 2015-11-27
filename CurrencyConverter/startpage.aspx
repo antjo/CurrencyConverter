@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="startpage.aspx.cs" Inherits="CurrencyConverter.startpage" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46,7 +48,7 @@
 
 
 
-            
+
 
 
 
@@ -92,41 +94,54 @@
 
      
 
-    <asp:DropDownList ID="ddlfrom" runat="server" Height="27px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" Width="198px">
-        
+    <asp:DropDownList ID="ddlfrom" runat="server" Height="27px"  Width="198px">
+
     </asp:DropDownList>
                     </td>
                     <td class="auto-style11" style="width: 40px" >
-    <asp:Button ID="Button2" runat="server" height="29px" Text="Swap" width="63px" OnClick="Button2_Click" />
+    <asp:Button ID="Button2" runat="server" height="29px" Text="Swap" width="63px" OnClick="Swap_Click" />
                     </td>
                     <td class="auto-style12" style="width: 110px" >
-    <asp:DropDownList ID="ddlto" runat="server" Height="27px" Width="197px" OnSelectedIndexChanged="ddlto_SelectedIndexChanged">
+
+    <asp:DropDownList ID="ddlto" runat="server" Height="27px" Width="197px">
         
+
     </asp:DropDownList>
-                    </td>
-                    <td class="auto-style10" style="width: 60px;">
+    </td>
+    <td class="auto-style10" style="width: 60px;">
     <asp:Button ID="ConvertButton0" runat="server" height="29px" OnClick="ConvertButton_Click" Text="Convert" />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                    </td>
 
-                </tr>
-                <tr>
-                    <td>
-                        &nbsp;</td>
-                </tr>
-                </table>
-                </center>
-            </div>
-        </div>
-        <br />
-
-
-
-
-
+    </td>
+    </tr>       
+    </table>
+    <br />
+    <asp:TextBox ID="TextBox1" runat="server" Font-Size="Larger" style="text-align:center"></asp:TextBox>
+    <br />
+    <asp:TextBox ID="TextBox2" runat="server" Font-Size="Larger" style="text-align:center"></asp:TextBox>
+    <br />
+    <asp:TextBox ID="TextBox3" runat="server" Font-Size="Larger" style="text-align:center"></asp:TextBox>
+    </center>
+    </div>
+    </div>
+    <br />
+        
     </form>
+
+
+    <br />
+    <br />
+
+    <div id="graph">
+        <center>
+        <asp:Chart runat="server" ID="chart1">
+            <Titles></Titles>
+            <Series></Series>
+            <ChartAreas></ChartAreas>
+        </asp:Chart>
+        </center>
+    </div>
+
+
 </body>
 
 </html>

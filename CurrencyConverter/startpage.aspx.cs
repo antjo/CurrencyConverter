@@ -9,6 +9,7 @@ using CurrencyConverter.App_Data;
 using System.Web.UI.DataVisualization.Charting;
 using System.Net;
 using System.Web.Script.Serialization;
+using System.Drawing;
 
 
 namespace CurrencyConverter
@@ -54,7 +55,8 @@ namespace CurrencyConverter
             chart1.Series.Clear();
             chart1.ChartAreas.Clear();
             //add new chart area and series for the new graph
-            chart1.Series.Add("Series1");            
+            chart1.Series.Add("Series1");
+            chart1.Series["Series1"].ChartType = SeriesChartType.Line;
             chart1.ChartAreas.Add("ChartArea1");
 
             //use web service to get the results to plot
@@ -73,6 +75,15 @@ namespace CurrencyConverter
             chart1.ChartAreas["ChartArea1"].AxisX.Minimum = ((DateTime)result[0].AxisX).ToOADate();
             chart1.ChartAreas["ChartArea1"].AxisX.IntervalType = DateTimeIntervalType.Months;
             chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+
+
+            chart1.Titles.Add(
+                new Title(from+" to "+to+" currency changes over the past year", 
+                    Docking.Top, 
+                    new Font("Times New Roman",12, FontStyle.Bold), 
+                    Color.Red)
+
+                );
 
             //lastly make the graph visible for the user 
             chart1.Visible = true;

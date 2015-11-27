@@ -286,12 +286,13 @@
 
 
     <div id="graph">
-
+        <center>
         <asp:Chart runat="server" ID="chart1">
+            <Titles></Titles>
             <Series></Series>
             <ChartAreas></ChartAreas>
         </asp:Chart>
-
+        </center>
     </div>
 
 

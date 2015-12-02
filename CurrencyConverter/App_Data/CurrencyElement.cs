@@ -5,6 +5,7 @@ using System.Web;
 
 namespace CurrencyConverter.App_Data
 {
+    //A class for storing the data point that is to be inserted into the currency chart. 
     public class CurrencyElement
     {
         

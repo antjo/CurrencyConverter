@@ -63,6 +63,7 @@ namespace CurrencyConverter
         {
 
             int temp = 0;
+            //dont do anything unless a valid money amount has been entered in the money text box.
             if (!money_text_box.Text.Equals("") && Int32.TryParse(money_text_box.Text, out temp))
             {
                 //  to declare that mywebService is webservice that we built which contains all the calculation logic
@@ -75,17 +76,19 @@ namespace CurrencyConverter
                 TextBox2.Text = "1 " + ddlfrom.SelectedValue + " = " + mywebService.get_rate_from_api(ddlfrom.SelectedValue, ddlto.SelectedValue) + " " + ddlto.SelectedValue;
                 TextBox3.Text = "1 " + ddlto.SelectedValue + " = " + mywebService.get_rate_from_api(ddlto.SelectedValue, ddlfrom.SelectedValue) + " " + ddlfrom.SelectedValue; ;
 
-
+                //only call the chart method if two different currencies has been entered, otherwise hide the chart
                 if (ddlto.SelectedIndex != ddlfrom.SelectedIndex) addChart(ddlfrom.SelectedValue, ddlto.SelectedValue);
                 else chart1.Visible = false;
             }
 
         }
 
+        //had to be here for some reason
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+
         // to swap the currencies
         protected void Swap_Click(object sender, EventArgs e)
         {
@@ -130,15 +133,12 @@ namespace CurrencyConverter
             chart1.ChartAreas["ChartArea1"].AxisX.IntervalType = DateTimeIntervalType.Months;
             chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
-
-
+            //and add a titel to it
             chart1.Titles.Add(
                 new Title(from + " to " + to + " currency changes over the past year",
                     Docking.Top,
                     new Font("Times New Roman", 12, FontStyle.Bold),
                     Color.Red)
-
-
                 );
 
             //lastly make the graph visible for the user 

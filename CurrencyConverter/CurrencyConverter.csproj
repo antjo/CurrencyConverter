@@ -102,20 +102,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="convertpage.aspx" />
     <Content Include="startpage.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="convertpage.aspx.cs">
-      <DependentUpon>convertpage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="convertpage.aspx.designer.cs">
-      <DependentUpon>convertpage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Data\CurrencyElement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

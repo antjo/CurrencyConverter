@@ -17,15 +17,32 @@ using System.Drawing;
 namespace CurrencyConverter
 {
     public partial class startpage : System.Web.UI.Page
+
     {
+        static int gl_ind = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            // to ensure that this code will be executed only one time
+            if (gl_ind == 0 )
+            {
+              gl_ind=1;
+           
+            // this code to fill dropdown lists with currency name as text and currency symbol as value
+            // for example: currency name is "US Dollar" and currency value is "USD"
             FillWithISOCurrencySymbols(ddlfrom);
             FillWithISOCurrencySymbols(ddlto);
+
+            // this code to select initial value in the dropdown list currency form
+            ddlfrom.ClearSelection();
+            ddlfrom.Items.FindByValue("GBP").Selected = true;
+            
+            // this code to select initial value in the dropdown list currency to
+            ddlto.ClearSelection();
+            ddlto.Items.FindByValue("GBP").Selected = true;
         }
-
-
+ }
+        // this method to fill dropdown list with currencies' names and symbols
         public static void FillWithISOCurrencySymbols(ListControl ctrl)
         {
             foreach (CultureInfo cultureInfo in CultureInfo.GetCultures(CultureTypes.SpecificCultures))
@@ -36,7 +53,8 @@ namespace CurrencyConverter
                     ctrl.Items.Add(new ListItem(regionInfo.CurrencyEnglishName, regionInfo.ISOCurrencySymbol));
 
                 }
-            }
+
+              }
 
         }
 
@@ -47,10 +65,17 @@ namespace CurrencyConverter
             int temp = 0;
             if (!money_text_box.Text.Equals("") && Int32.TryParse(money_text_box.Text, out temp))
             {
+                //  to declare that mywebService is webservice that we built which contains all the calculation logic
                 WebService1 mywebService = new WebService1();
+                //  to invoke Curr_converter which is part of mywebService 
+                // and provid it with 3 required inputs (currency_from,currency_to and amount of money to be converted)
                 TextBox1.Text = mywebService.Curr_converter(ddlfrom.SelectedValue, ddlto.SelectedValue, System.Convert.ToDecimal(money_text_box.Text));
-                TextBox2.Text = "1 " + ddlfrom.SelectedValue + " = " + mywebService.get_rate_from_api(1, ddlfrom.SelectedValue, ddlto.SelectedValue) + " " + ddlto.SelectedValue;
-                TextBox3.Text = "1 " + ddlto.SelectedValue + " = " + mywebService.get_rate_from_api(1, ddlto.SelectedValue, ddlfrom.SelectedValue) + " " + ddlfrom.SelectedValue; ;
+
+                // to show the exchange rate for both currencies
+                TextBox2.Text = "1 " + ddlfrom.SelectedValue + " = " + mywebService.get_rate_from_api(ddlfrom.SelectedValue, ddlto.SelectedValue) + " " + ddlto.SelectedValue;
+                TextBox3.Text = "1 " + ddlto.SelectedValue + " = " + mywebService.get_rate_from_api(ddlto.SelectedValue, ddlfrom.SelectedValue) + " " + ddlfrom.SelectedValue; ;
+
+
                 if (ddlto.SelectedIndex != ddlfrom.SelectedIndex) addChart(ddlfrom.SelectedValue, ddlto.SelectedValue);
                 else chart1.Visible = false;
             }
@@ -61,12 +86,19 @@ namespace CurrencyConverter
         {
 
         }
-
+        // to swap the currencies
         protected void Swap_Click(object sender, EventArgs e)
         {
+            // save the current selected index of dropdown list in index
             int index = ddlfrom.SelectedIndex;
+            // swap the currencies
             ddlfrom.SelectedIndex = ddlto.SelectedIndex;
+            // use saved index
             ddlto.SelectedIndex = index;
+
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
         }
 
 
@@ -111,6 +143,29 @@ namespace CurrencyConverter
 
             //lastly make the graph visible for the user 
             chart1.Visible = true;
+        }
+
+        protected void money_text_box_TextChanged(object sender, EventArgs e)
+        {
+            decimal d;
+            if (decimal.TryParse(money_text_box.Text, out d))
+            {
+                //valid 
+                TextBox4.Text = "";
+            }
+            else
+            {
+                //invalid
+                //System.Windows.Forms.MessageBox.Show("Please enter a valid number");
+                TextBox4.Text = "Enter valid amount";
+                TextBox1.Text = "";
+                TextBox2.Text = "";
+                TextBox3.Text = "";
+                money_text_box.Text = "";
+                money_text_box.Focus();
+
+                return;
+            }
         }
     }
 

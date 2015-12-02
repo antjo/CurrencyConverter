@@ -87,7 +87,7 @@
     
     
             
-                        <asp:TextBox ID="money_text_box" runat="server" Width="131px" Height="20px" MaxLength="0" ></asp:TextBox>
+                        <asp:TextBox ID="money_text_box" runat="server" Width="131px" Height="20px" MaxLength="0" OnTextChanged="money_text_box_TextChanged" ></asp:TextBox>
                     </td>
                     <td class="auto-style13" style="width: 20px" >
 
@@ -112,14 +112,29 @@
     <asp:Button ID="ConvertButton0" runat="server" height="29px" OnClick="ConvertButton_Click" Text="Convert" />
 
     </td>
-    </tr>       
+    </tr>  
+                
+                <%-- royal --%>
+                      <tr>
+                    <td class="auto-style7" style="width: 110px;">
+            
+
+                    <asp:TextBox ID="TextBox4" runat="server" BorderStyle="None" ReadOnly="True" Width="130px" ForeColor="Red"></asp:TextBox>
+                          </td>
+                    <td class="auto-style13" style="width: 20px">&nbsp;</td>
+                    <td class="auto-style11" style="width: 40px">&nbsp;</td>
+                    <td class="auto-style12" style="width: 110px">&nbsp;</td>
+                    <td class="auto-style10" style="width: 60px;">&nbsp;</td>
+                </tr>
+
+                <%-- royal --%>
     </table>
     <br />
-    <asp:TextBox ID="TextBox1" runat="server" Font-Size="Larger" style="text-align:center"></asp:TextBox>
+    <asp:TextBox ID="TextBox1" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True"></asp:TextBox>
     <br />
-    <asp:TextBox ID="TextBox2" runat="server" Font-Size="Larger" style="text-align:center"></asp:TextBox>
+    <asp:TextBox ID="TextBox2" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True"></asp:TextBox>
     <br />
-    <asp:TextBox ID="TextBox3" runat="server" Font-Size="Larger" style="text-align:center"></asp:TextBox>
+    <asp:TextBox ID="TextBox3" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True"></asp:TextBox>
     </center>
     </div>
     </div>
@@ -128,6 +143,10 @@
     </form>
 
 
+    <br />
+    <br />
+    <br />
+    <br />
     <br />
     <br />
 

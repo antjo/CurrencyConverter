@@ -26,38 +26,36 @@ namespace CurrencyConverter
     {
 
         [WebMethod]
-
+        //This method receive three inputs (The currency_from, the currency_to and amount of money to be converted)
+        //this method contains the calculation logic
         public string Curr_converter(String curr_from,String curr_to,decimal amount_of_money)
 
         {
-
+            // to retrieve live exchange rate from get_rate_from_api method
                decimal rate_from_api = 0;
+               rate_from_api = get_rate_from_api(curr_from, curr_to);
 
-
+            //to calculate the equavelant amount of money by multiplying the received amount of money and the exchange rate 
                String result_amount_of_money ;
-
-
-               rate_from_api = get_rate_from_api(1, curr_from, curr_to);
                result_amount_of_money = System.Convert.ToString(rate_from_api * amount_of_money);
             return result_amount_of_money;
         }
 
         [WebMethod]
-        public decimal get_rate_from_api(decimal amount_of_money, string from_curr_code, string to_curr_code)
-
-
+        //this method to connect to external web service which is yahoo's api to get live exchange rate
+        //source http://www.c-sharpcorner.com/Blogs/14268/Asp-Net-real-time-currency-converter-using-api.aspx
+        //we modified the function to serve our course work
+        public decimal get_rate_from_api(string from_curr_code, string to_curr_code)
         {
-
-            try
+           try
 
             {
-                //
+                //url of the external api
                 const string urlPattern = "http://finance.yahoo.com/d/quotes.csv?s={0}{1}=X&f=l1";
-
                 string url = String.Format(urlPattern, from_curr_code, to_curr_code);
-
+                //here we get the response as string
                 string response = new WebClient().DownloadString(url);
-
+                //here to convert the string to decimal
                 decimal exchangeRate = decimal.Parse(response, System.Globalization.CultureInfo.InvariantCulture);
 
                 return exchangeRate;
@@ -85,6 +83,7 @@ namespace CurrencyConverter
             string dateYear = System.DateTime.Now.Date.Year.ToString();
             string dateMonth = System.DateTime.Now.Date.Month.ToString();
             string dateDay = System.DateTime.Now.Date.Day.ToString();
+            dateDay = formatDateDay(dateDay);
 
             //API for historical currency rates
             //to get the result formated
@@ -131,7 +130,7 @@ namespace CurrencyConverter
                 JObject jObj = JObject.Parse(response);
                 JToken jTok = jObj["quotes"];
                 double rate = calcRate((string)jTok["USD" + from_curr_code], (string)jTok["USD" + to_curr_code]);
-                  
+                 
                 //insert rate into the element object and insert the element into the elements list to return later on
                 element.AxisY = rate;
                 elements[i] = element;
@@ -156,8 +155,17 @@ namespace CurrencyConverter
             else return (monthIndex.ToString());
         }
 
-            
-       
+        //we had to add this function to make sure that days 1-9 is like this "01" instead of "1"
+        private string formatDateDay(String dateDay)
+        {
+            String modified_dateDay = dateDay;
+            if (Int16.Parse(dateDay) <=9)
+            {
+                modified_dateDay = "0" + dateDay;
+            }
+            return modified_dateDay;
+        }
+
 
     }
 }

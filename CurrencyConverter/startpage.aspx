@@ -44,25 +44,8 @@
             <h1 style="height: 92px; text-align: center">&nbsp;</h1>
             <h1 style="height: 92px; text-align: center">Shadow Corp Currency Converter</h1>
 
-
-
-
-
-
-
-
-
-
-
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;
-
-
-
-
-    &nbsp;
-    &nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;
+           
         <br />
             <!-- when the button is clicked it will redirect to convertpage.aspx -->
 
@@ -73,7 +56,6 @@
                 <tr>
                     <td class="auto-style7" style="width: 110px;">
             
-
                         Amount of money</td>
                     <td class="auto-style13" style="width: 20px">From</td>
                     <td class="auto-style11" style="width: 40px">&nbsp;</td>
@@ -130,11 +112,11 @@
                 <%-- royal --%>
     </table>
     <br />
-    <asp:TextBox ID="TextBox1" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True"></asp:TextBox>
+    <asp:TextBox ID="TextBox1" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True" Visible="false"></asp:TextBox>
     <br />
-    <asp:TextBox ID="TextBox2" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True"></asp:TextBox>
+    <asp:TextBox ID="TextBox2" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True" Visible="false"></asp:TextBox>
     <br />
-    <asp:TextBox ID="TextBox3" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True"></asp:TextBox>
+    <asp:TextBox ID="TextBox3" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True" Visible="false"></asp:TextBox>
     </center>
     </div>
     </div>

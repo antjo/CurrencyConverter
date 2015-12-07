@@ -75,10 +75,20 @@ namespace CurrencyConverter
                 // to show the exchange rate for both currencies
                 TextBox2.Text = "1 " + ddlfrom.SelectedValue + " = " + mywebService.get_rate_from_api(ddlfrom.SelectedValue, ddlto.SelectedValue) + " " + ddlto.SelectedValue;
                 TextBox3.Text = "1 " + ddlto.SelectedValue + " = " + mywebService.get_rate_from_api(ddlto.SelectedValue, ddlfrom.SelectedValue) + " " + ddlfrom.SelectedValue; ;
-
+                //make the result visible
+                TextBox1.Visible = true;
+                TextBox2.Visible = true;
+                TextBox3.Visible = true;
                 //only call the chart method if two different currencies has been entered, otherwise hide the chart
                 if (ddlto.SelectedIndex != ddlfrom.SelectedIndex) addChart(ddlfrom.SelectedValue, ddlto.SelectedValue);
                 else chart1.Visible = false;
+            }
+            else
+            {
+                //hide the textboxes if no valid amount has been entered
+                TextBox1.Visible = false;
+                TextBox2.Visible = false;
+                TextBox3.Visible = false;
             }
 
         }
@@ -155,8 +165,7 @@ namespace CurrencyConverter
             }
             else
             {
-                //invalid
-                //System.Windows.Forms.MessageBox.Show("Please enter a valid number");
+                //invalid                
                 TextBox4.Text = "Enter valid amount";
                 TextBox1.Text = "";
                 TextBox2.Text = "";

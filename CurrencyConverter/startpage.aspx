@@ -37,101 +37,60 @@
 
 <body>
     <form id="form1" runat="server">
-
         <div class="auto-style8">
-
-
             <h1 style="height: 92px; text-align: center">&nbsp;</h1>
             <h1 style="height: 92px; text-align: center">Shadow Corp Currency Converter</h1>
-
-            <br />
-           
-        <br />
-            <!-- when the button is clicked it will redirect to convertpage.aspx -->
-
-            <div style="text-align: center;">
-                <%-- <div style="margin: 0 auto; text-align:left;" class="auto-style9">--%>
-                <center>
+            <br />           
+            <br />     
+            <div style="text-align: center;">              
+            <center>
             <table  >
                 <tr>
-                    <td class="auto-style7" style="width: 110px;">
-            
-                        Amount of money</td>
+                    <td class="auto-style7" style="width: 110px;"> Amount of money</td>
                     <td class="auto-style13" style="width: 20px">From</td>
-                    <td class="auto-style11" style="width: 40px">&nbsp;</td>
-                    <td class="auto-style12" style="width: 110px">To</td>
-                    <td class="auto-style10" style="width: 60px;">&nbsp;</td>
+                    <td class="auto-style11" style="width: 40px"/>
+                    <td class="auto-style12" style="width: 110px">To</td>                    
                 </tr>
                 <tr>
-                    <td class="auto-style7" style="width: 110px" >
-
-    
-    
-    
-            
-                        <asp:TextBox ID="money_text_box" runat="server" Width="131px" Height="20px" MaxLength="0" OnTextChanged="money_text_box_TextChanged" ></asp:TextBox>
+                    <td class="auto-style7" style="width: 110px" >           
+                        <asp:TextBox ID="money_text_box" runat="server" Width="131px" Height="20px" MaxLength="0" OnTextChanged="money_text_box_TextChanged" />
                     </td>
                     <td class="auto-style13" style="width: 20px" >
-
-
-     
-
-    <asp:DropDownList ID="ddlfrom" runat="server" Height="27px"  Width="198px">
-
-    </asp:DropDownList>
+                    <asp:DropDownList ID="ddlfrom" runat="server" Height="27px"  Width="198px" />
                     </td>
                     <td class="auto-style11" style="width: 40px" >
-    <asp:Button ID="Button2" runat="server" height="29px" Text="Swap" width="63px" OnClick="Swap_Click" />
+                    <asp:Button ID="Button2" runat="server" height="29px" Text="Swap" width="63px" OnClick="Swap_Click" />
                     </td>
                     <td class="auto-style12" style="width: 110px" >
-
-    <asp:DropDownList ID="ddlto" runat="server" Height="27px" Width="197px">
-        
-
-    </asp:DropDownList>
-    </td>
-    <td class="auto-style10" style="width: 60px;">
-    <asp:Button ID="ConvertButton0" runat="server" height="29px" OnClick="ConvertButton_Click" Text="Convert" />
-
-    </td>
-    </tr>  
-                
-                <%-- royal --%>
-                      <tr>
-                    <td class="auto-style7" style="width: 110px;">
-            
-
-                    <asp:TextBox ID="TextBox4" runat="server" BorderStyle="None" ReadOnly="True" Width="130px" ForeColor="Red"></asp:TextBox>
-                          </td>
-                    <td class="auto-style13" style="width: 20px">&nbsp;</td>
-                    <td class="auto-style11" style="width: 40px">&nbsp;</td>
-                    <td class="auto-style12" style="width: 110px">&nbsp;</td>
-                    <td class="auto-style10" style="width: 60px;">&nbsp;</td>
-                </tr>
-
-                <%-- royal --%>
-    </table>
-    <br />
-    <asp:TextBox ID="TextBox1" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True" Visible="false"></asp:TextBox>
-    <br />
-    <asp:TextBox ID="TextBox2" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True" Visible="false"></asp:TextBox>
-    <br />
-    <asp:TextBox ID="TextBox3" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True" Visible="false"></asp:TextBox>
-    </center>
+                    <asp:DropDownList ID="ddlto" runat="server" Height="27px" Width="197px"/>
+                    </td>
+                    <td class="auto-style10" style="width: 60px;">
+                    <asp:Button ID="ConvertButton0" runat="server" height="29px" OnClick="ConvertButton_Click" Text="Convert" />
+                    </td>
+                </tr>                  
+                <tr>
+                    <td class="auto-style7" style="width: 110px;">    
+                    <asp:TextBox ID="TextBox4" runat="server" BorderStyle="None" ReadOnly="True" Width="130px" ForeColor="Red"/>
+                    </td>                    
+               </tr>
+            </table>
+            <br />
+            <asp:TextBox ID="TextBox1" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True" Visible="false"/>
+            <br />
+            <asp:TextBox ID="TextBox2" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True" Visible="false"/>
+            <br />
+            <asp:TextBox ID="TextBox3" runat="server" Font-Size="Larger" style="text-align:center" ReadOnly="True" Visible="false"/>
+        </center>
+        </div>
     </div>
-    </div>
-    <br />
-        
+    <br />        
     </form>
-
-
     <br />
     <br />
     <br />
     <br />
     <br />
     <br />
-
     <div id="graph">
         <center>
         <asp:Chart runat="server" ID="chart1">
@@ -141,8 +100,6 @@
         </asp:Chart>
         </center>
     </div>
-
-
 </body>
 
 </html>

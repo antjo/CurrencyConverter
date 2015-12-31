@@ -93,11 +93,29 @@ namespace CurrencyConverter
 
         }
 
-        //had to be here for some reason
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void money_text_box_TextChanged(object sender, EventArgs e)
         {
+            decimal d;
+            if (decimal.TryParse(money_text_box.Text, out d))
+            {
+                //valid 
+                TextBox4.Text = "";
+            }
+            else
+            {
+                //invalid                
+                TextBox4.Text = "Enter valid amount";
+                TextBox1.Text = "";
+                TextBox2.Text = "";
+                TextBox3.Text = "";
+                money_text_box.Text = "";
+                money_text_box.Focus();
 
+                return;
+            }
         }
+
+        
 
         // to swap the currencies
         protected void Swap_Click(object sender, EventArgs e)
@@ -155,27 +173,13 @@ namespace CurrencyConverter
             chart1.Visible = true;
         }
 
-        protected void money_text_box_TextChanged(object sender, EventArgs e)
+        //had to be here for some reason
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            decimal d;
-            if (decimal.TryParse(money_text_box.Text, out d))
-            {
-                //valid 
-                TextBox4.Text = "";
-            }
-            else
-            {
-                //invalid                
-                TextBox4.Text = "Enter valid amount";
-                TextBox1.Text = "";
-                TextBox2.Text = "";
-                TextBox3.Text = "";
-                money_text_box.Text = "";
-                money_text_box.Focus();
 
-                return;
-            }
         }
+
+        
     }
 
 
